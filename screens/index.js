@@ -1,59 +1,60 @@
-import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, SafeAreaView, Image } from "react-native";
+import React, { useState } from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ImageBackground,
+  TextInput
+} from "react-native";
 
-const AboutTheAppScreen = (params) => {
-  const [ImageSource, setImageSource] = useState();
-  const [text1, setText1] = useState("");
-  const [text2, setText2] = useState("");
-  useEffect(() => {
-    setText1(
-      "I understand that uses my dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec."
-    );
-    setText2(
-      "I understand that uses my dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec."
-    );
-    setImageSource(require("./assets/Frame21.png"));
-  }, []);
+const AddPhoneNumber = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.imgScroller}>
-        <Image source={ImageSource} />
-        <Image
-          style={styles.threeDots}
-          source={require("./assets/3Dots.png")}
+    <ImageBackground
+      source={require("./assets/foodWatermark.png")}
+      resizeMode="center"
+      style={styles.container}>
+      <View style={styles.inputContainer}>
+        <Text style={styles.inputText}>Enter Phone Number</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={text => setPhoneNumber(text)}
+          value={phoneNumber}
+          placeholder="Enter Phone Number"
+          placeholderTextColor="#9B9B9B"
+          autoCapitalize="none"
+          autoCorrect={false}
         />
       </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>{text1}</Text>
-        <Text style={styles.text}>{text2}</Text>
-      </View>
-    </SafeAreaView>
+    </ImageBackground>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
     backgroundColor: "#fff"
   },
-  imgScroller: {
+  inputContainer: {
     flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 20
+    justifyContent: "center",
+    marginHorizontal: 20,
+    marginTop: 40
   },
-  threeDots: {
-    marginTop: 20
-  },
-  textContainer: {
-    paddingHorizontal: 20
-  },
-  text: {
+  inputText: {
     fontSize: 14,
-    textAlign: "justify",
-    lineHeight: 18,
-    marginVertical: 10
+    marginLeft: 20,
+    color: "#111112"
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#e6e6e6",
+    borderRadius: 10,
+    padding: 10,
+    paddingLeft: 20,
+    marginVertical: 10,
+    width: "100%",
+    height: 50
   }
 });
-export default AboutTheAppScreen;
+
+export default AddPhoneNumber;
